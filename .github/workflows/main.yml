@@ -2,32 +2,32 @@ name: WisdomPetMedicine
 
 on:
   push:
-    branches:
-        ["main","master"]
-
+    branches: [ "main", "master" ]
 
 jobs:
   build:
-      runs-on: ubuntu-latest
-      steps:
-       - uses: actions/checkout@v4
+    runs-on: ubuntu-latest
 
-       - name: Log in
-         uses: azure/login@v1
-         with:
-           creds: ${{secrets.AZURE_CREDIENTIALS}}
-      
-       - name : 'Login into ACR'
-         uses: azure/docker-login@v1
-         with:
-            login-server: $ {{secrets.ACR_LOGIN_SERVER}}
-            username: ${{secrets.ACR_USERNAME}}
-            password: ${{secrets.ACR_PASSWORD}}
-         
-       - name: 'Build and push container image'
-         run:
-           docker build src -f src/Wpm.Management.Api/Dockerfile -t ${{secrets.ACR_LOGIN_SERVER}}/wpm-management-api:${{ github.sha }}
-           docker push ${{secrets.ACR_LOGIN_SERVER}}/wpm-management-api:${{ github.sha }}
-           
-       - name: Show subscription
-         run: az account show
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Login to Azure Container Registry
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ secrets.ACR_LOGIN_SERVER }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+
+      - name: Build and Push Docker Image
+        run: |
+          docker build src -f src/Wpm.Management.Api/Dockerfile -t ${{ secrets.ACR_LOGIN_SERVER }}/wpm-management-api:${{ github.sha }}
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/wpm-management-api:${{ github.sha }}
+
+      - name: Show Azure Subscription Info
+        run: az account show
