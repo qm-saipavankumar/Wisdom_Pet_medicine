@@ -26,8 +26,9 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build src -f src/Wpm.Management.Api/Dockerfile -t ${{ secrets.ACR_LOGIN_SERVER }}/wpm-management-api:${{ github.sha }}
-          docker push ${{ secrets.ACR_LOGIN_SERVER }}/wpm-management-api:${{ github.sha }}
+          docker build . -f Wpm.Api.Management.Api/Dockerfile -t ${{secrets.ACR_LOGIN_SERVER}}/wpm-management-api:${{ github.sha }}
+          docker push ${{secrets.ACR_LOGIN_SERVER}}/wpm-management-api:${{ github.sha }}
+
 
       - name: Show Azure Subscription Info
         run: az account show
