@@ -26,8 +26,8 @@ jobs:
 
       - name: Build and Push Docker Image 
         run: | 
-          docker build Wpm.Api.Management.Api -f Wpm.Api.Management.Api/Dockerfile -t ${{secrets.ACR_LOGIN_SERVER}}/wpm-management-api:${{ github.sha }}
-          docker push ${{secrets.ACR_LOGIN_SERVER}}/wpm-management-api:${{ github.sha }}
+          docker build ./Wpm.Api.Management.Api -f ./Wpm.Api.Management.Api/Dockerfile -t ${{ secrets.ACR_LOGIN_SERVER }}/wpm-management-api:${{ github.sha }}
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/wpm-management-api:${{ github.sha }}
 
 
 
