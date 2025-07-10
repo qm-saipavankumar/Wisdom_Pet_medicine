@@ -24,10 +24,22 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
+      -  name: Get Current Date in yyyymmdd format
+         run: echo "DATE_TIME=$(date +'%Y%m%d')" >> $GITHUB_ENV
+
+
       - name: Build and Push Docker Image 
         run: | 
-          docker build ./Wpm.Api.Management.APi -f ./Wpm.Api.Management.APi/Dockerfile -t ${{ secrets.ACR_LOGIN_SERVER }}/wpm-management-api:${{ github.sha }}
-          docker push ${{ secrets.ACR_LOGIN_SERVER }}/wpm-management-api:${{ github.sha }}
+          docker build ./Wpm.Api.Management.APi -f ./Wpm.Api.Management.APi/Dockerfile -t ${{ secrets.ACR_LOGIN_SERVER }}/wpm-management-api:${{env.DATE_TIME}}.${{ github.run_number }}
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/wpm-management-api:${{env.DATE_TIME}}.${{ github.run_number }}
+
+      - name: Deploy to Azure Container App 
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          resourceGroup: WPM
+          containerAppName: wpmcontainerappenv
+          imageToDeploy:  ${{ secrets.ACR_LOGIN_SERVER }}/wpm-management-api:${{env.DATE_TIME}}.${{ github.run_number }}
+
 
 
 
