@@ -33,11 +33,14 @@ jobs:
           docker build ./Wpm.Api.Management.APi -f ./Wpm.Api.Management.APi/Dockerfile -t ${{ secrets.ACR_LOGIN_SERVER }}/wpm-management-api:${{env.DATE_TIME}}.${{ github.run_number }}
           docker push ${{ secrets.ACR_LOGIN_SERVER }}/wpm-management-api:${{env.DATE_TIME}}.${{ github.run_number }}
 
+     
+
       - name: Build and Push clinic container Image 
         run: | 
-          docker build ./Wpm.Clinic -f ./Wpm.Clinic/Dockerfile -t ${{ secrets.ACR_LOGIN_SERVER }}/wpm-clininc-api:${{env.DATE_TIME}}.${{ github.run_number }}
-          docker push ${{ secrets.ACR_LOGIN_SERVER }}/wpm-clinic-api:${{env.DATE_TIME}}.${{ github.run_number }}
+            docker build . -f ./Wpm.Clinic/Dockerfile -t ${{ secrets.ACR_LOGIN_SERVER }}/wpm-clinic-api:${{env.DATE_TIME}}.${{ github.run_number }}
+            docker push ${{ secrets.ACR_LOGIN_SERVER }}/wpm-clinic-api:${{env.DATE_TIME}}.${{ github.run_number }}
 
+          
 
 
       - name: Deploy Management to Azure Container App 
