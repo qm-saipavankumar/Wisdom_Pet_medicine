@@ -49,9 +49,6 @@ jobs:
           resourceGroup: WPM
           containerAppName: wpmcontainerappenv
           imageToDeploy:  ${{ secrets.ACR_LOGIN_SERVER }}/wpm-management-api:${{env.DATE_TIME}}.${{ github.run_number }}
-          registryUrl: ${{ secrets.ACR_LOGIN_SERVER }}
-          registryUsername: ${{ secrets.ACR_USERNAME }}
-          registryPassword: ${{ secrets.ACR_PASSWORD }}
           environmentVariables: Logging__LogLevel__Microsoft.EntityFrameworkCore=Debug
           
 
@@ -61,9 +58,7 @@ jobs:
           resourceGroup: WPM
           containerAppName: wpm-clininc
           imageToDeploy:  ${{ secrets.ACR_LOGIN_SERVER }}/wpm-clinic-api:${{env.DATE_TIME}}.${{ github.run_number }}
-          registryUrl: ${{ secrets.ACR_LOGIN_SERVER }}
-          registryUsername: ${{ secrets.ACR_USERNAME }}
-          registryPassword: ${{ secrets.ACR_PASSWORD }}
+    
   
 
 
