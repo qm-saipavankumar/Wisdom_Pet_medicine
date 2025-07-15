@@ -57,6 +57,9 @@ jobs:
           resourceGroup: WPM
           containerAppName: wpm-clininc
           imageToDeploy:  ${{ secrets.ACR_LOGIN_SERVER }}/wpm-clinic-api:${{env.DATE_TIME}}.${{ github.run_number }}
+          registryUrl: ${{ secrets.ACR_LOGIN_SERVER }}
+          registryUsername: ${{ secrets.ACR_USERNAME }}
+          registryPassword: ${{ secrets.ACR_PASSWORD }}
   
 
 
