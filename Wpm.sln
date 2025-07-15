@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36119.2 d17.14
+VisualStudioVersion = 17.14.36119.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpm.Management.APi", "Wpm.Api.Management.APi\Wpm.Management.APi.csproj", "{082F30F7-3C0E-44E5-97A8-C4D8C73B7348}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpm.Clinic.Api", "Wpm.Clinic\Wpm.Clinic.Api.csproj", "{AE0A6D94-8E2A-4D39-A009-0271EEE9804F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{082F30F7-3C0E-44E5-97A8-C4D8C73B7348}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{082F30F7-3C0E-44E5-97A8-C4D8C73B7348}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{082F30F7-3C0E-44E5-97A8-C4D8C73B7348}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE0A6D94-8E2A-4D39-A009-0271EEE9804F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE0A6D94-8E2A-4D39-A009-0271EEE9804F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE0A6D94-8E2A-4D39-A009-0271EEE9804F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE0A6D94-8E2A-4D39-A009-0271EEE9804F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
