@@ -39,6 +39,7 @@ jobs:
           resourceGroup: WPM
           containerAppName: wpmcontainerappenv
           imageToDeploy:  ${{ secrets.ACR_LOGIN_SERVER }}/wpm-management-api:${{env.DATE_TIME}}.${{ github.run_number }}
+          environmentVariables: Logging__LogLevel__Microsoft.EntityFrameworkCore=Debug
 
 
 
