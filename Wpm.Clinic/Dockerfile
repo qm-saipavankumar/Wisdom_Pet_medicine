@@ -12,9 +12,15 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Wpm.Clinic.Api.csproj", "."]
-RUN dotnet restore "./Wpm.Clinic.Api.csproj"
+
+# Copy the .csproj file and restore dependencies
+COPY Wpm.Clinic/Wpm.Clinic.Api.csproj Wpm.Clinic/
+RUN dotnet restore Wpm.Clinic/Wpm.Clinic.Api.csproj
+
+# Copy the rest of the source code
 COPY . .
+
+# Build the project
 WORKDIR "/src/Wpm.Clinic"
 RUN dotnet build "./Wpm.Clinic.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
